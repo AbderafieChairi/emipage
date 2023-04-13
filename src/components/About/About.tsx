@@ -33,7 +33,9 @@ export default function About() {
               width: "100%",
               margin: "10px",
               minWidth: "400px",
-              }}/>
+              }}
+              alt='img'
+              />
         </div>
     </div> 
     </div>

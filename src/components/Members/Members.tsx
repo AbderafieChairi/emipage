@@ -24,7 +24,7 @@ const Member=(props:any)=>{
     <div className="mem-cont" >
         <div className="mem-h">
             <div className="mem-img">
-                <img src={portrait} height="80" width="80" />
+                <img src={portrait} height="80" width="80" alt='portrait'/>
             </div>
             <div style={{padding:10}}>
                 <div style={{fontWeight: "bold",color: "#091E3E"}}>

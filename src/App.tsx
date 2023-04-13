@@ -21,7 +21,7 @@ export default function App() {
                         <div className="link-head" >Skills</div>
                         <div className="link-head" >Club Projects</div>
                     </div>
-                    <img src={logo} height="300" width="300" />
+                    <img src={logo} height="300" width="300" alt="logo"/>
                     <div>
                         <div className="Emicatronic">
                             EMICATR
