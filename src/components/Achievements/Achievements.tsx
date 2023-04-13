@@ -67,7 +67,7 @@ export default function Achievements() {
     <div className="ach1">
         <div className="achs">
             {
-                data.filter(i=>i.year==year)[0].achievments.map((item, index) => (
+                data.filter(i=>i.year===year)[0].achievments.map((item, index) => (
                     <div className="ach">
                         <div className="ach-side">
                             <div className="ach-row">

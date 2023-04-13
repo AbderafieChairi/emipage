@@ -10,11 +10,11 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  <div>
     <App />
     <About />
     <Achievements/>
     <Members/>
-  </React.StrictMode>
+  </div>
 );
 
