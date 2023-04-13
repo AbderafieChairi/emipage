@@ -4,7 +4,7 @@ import portrait from '../../portrait.png'
 export default function Members() {
   return (
     <div>
-    <h1 style={{textAlign:'center',marginTop:70}}>Our Comunity</h1>
+    <h1 style={{textAlign:'center',marginTop:70}}>Our Comunity for test</h1>
         <div className="mem-list">
             <Member/>
             <Member/>
