@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+#particle-canvas {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(174, 174, 174);
+  background-image: url("https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/img/demo-bg.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mytest{
+  z-index: 10;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* margin-top: 200px; */
+  gap:50px;
+  
+}
+.mytest > div{
   color: white;
+  font-size: 80px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+
+.settings{
+  color:white;
+  position: relative;
+  font-size: 75px;
+  animation: mymove 5s linear infinite;
+}
+.link-head{
+  font-size: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link-head:hover{
+  color: #06A3DA;
+  user-select: none;
+  cursor: pointer;
+}
+
+@keyframes mymove {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
 }

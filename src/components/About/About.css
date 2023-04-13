@@ -1,0 +1,14 @@
+.mi{
+    color:#06A3DA;
+}
+
+.styl{
+    padding:10px 10px 10px 50px;
+}
+.about-row{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,94 @@
+.ach-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ach1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+.ach-years {
+    width: 300px;
+    margin: 20px;
+    /* border-right: solid 3px gray; */
+}
+.ach-year {
+    padding: 10px;
+    margin: 5px;
+    background-color: rgb(180, 221, 245);
+}
+.ach-year:hover {
+    cursor: pointer;
+    user-select: none;
+    background-color: rgb(141, 207, 246);
+}
+
+
+.achs {
+    border-radius: 15px;
+    overflow: hidden;
+}
+.ach {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    background-color: #f7f9fa;
+    padding: 15px;
+}
+.ach-cont {
+    background-color: #eae7f7;
+    border-radius: 15px;
+}
+.ach-h {
+    font-size: 16px;
+    font-weight: bold;
+    color: #084c64;
+    margin: 12px;
+}
+.ach-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+.cercle {
+    height: 20px;
+    width: 20px;
+    background-color: gray;
+    border-radius: 50%;
+}
+.line {
+    height: 100%;
+    width: 3px;
+    background-color: gray;
+    
+}
+.ach-txt {
+    font-size: 15px;
+    height: 150px;
+    width: 600px;
+}
+.ach-row{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 10px;
+}
+.timeline{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
