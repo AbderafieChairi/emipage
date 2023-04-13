@@ -23,13 +23,13 @@ export default function App() {
                     </div>
                     <img src={logo} height="300" width="300" alt="logo"/>
                     <div>
-                        <div className="Emicatronic">
+                        <div className="emipage">
                             EMICATR
                         </div>
                         <span className="material-icons settings">
                             settings
                             </span>
-                        <div className="Emicatronic">
+                        <div className="emipage">
                             NIC
                         </div>                
                     </div>
