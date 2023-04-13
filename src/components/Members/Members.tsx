@@ -20,7 +20,9 @@ export default function Members() {
             profession: "Designer"
         },
     ]);
-  
+    React.useEffect(()=>{
+        setMembers(m=>m)
+    },[])
     return (
       <div>
         <h1 style={{ textAlign: 'center', marginTop: 70 }}>

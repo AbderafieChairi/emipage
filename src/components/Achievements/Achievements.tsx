@@ -57,7 +57,7 @@ export default function Achievements() {
     <div>
         <div className="ach-years">
             {data.map((item, index) => (
-                <div className="ach-year" key={index} onClick={() => setYear(item.year)}>
+                <div className="ach-year" key={index} onClick={() => {setYear(item.year);setData(d=>d)}}>
                     {item.year}
                 </div>
             ))}
