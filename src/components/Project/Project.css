@@ -1,0 +1,66 @@
+.prj-list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position:relative;
+}
+.prj-container{
+    height: 500px;
+    padding: 0px;
+    position: relative;
+    margin: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 400px;
+    height: max-content;
+    box-shadow: 2px 2px 5px gray;
+}
+.prj-img{
+    height: 300px;
+    width: 100%;
+    background-color: gray;
+}
+.prj-img img{
+    height: 100%;
+    width: 100%;
+}
+.prj-tag{
+    position: absolute;
+    left: 0px;
+    top: 50px;
+    background-color: #06A3DA;
+    color: white;
+    padding: 10px;
+}
+.prj-detail,.prj-detail >div{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+    padding: 2px;
+}
+.prj-info{
+    padding: 10px;
+}
+.prj-title{
+    padding: 10px 0px;
+    font-size: x-large;
+    font-weight: bold;
+}
+.prj-more{
+    color: #06A3DA;
+    padding: 10px 0px;
+    font-size: medium;
+    font-weight: bold;
+}
+.prj-touchable:hover{
+    cursor: pointer;
+    user-select: none;
+}
+.prj-detail-container{
+    height: 480px;
+    padding: 20px;
+    overflow-y: scroll;
+}

@@ -28,7 +28,7 @@ export default function App() {
                         </div>
                         <span className="material-icons settings">
                             settings
-                            </span>
+                        </span>
                         <div className="emipage">
                             NIC
                         </div>                

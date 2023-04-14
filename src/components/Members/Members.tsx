@@ -25,8 +25,8 @@ export default function Members() {
     },[])
     return (
       <div>
-        <h1 style={{ textAlign: 'center', marginTop: 70 }}>
-          Our Community for test
+        <h1 style={{ textAlign: 'center', margin:60 }}>
+          Our Community
         </h1>
         <div className="mem-list">
           {members.map((member, index) => (

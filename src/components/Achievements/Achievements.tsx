@@ -51,7 +51,7 @@ export default function Achievements() {
     ])
   return (
     <div>
-        <h1 style={{textAlign:'center'}}>Achievements</h1>
+        <h1 style={{textAlign:'center',margin:60}}>Achievements</h1>
 
     <div className="ach-container">
     <div>
@@ -68,7 +68,7 @@ export default function Achievements() {
         <div className="achs">
             {
                 data.filter(i=>i.year===year)[0].achievments.map((item, index) => (
-                    <div className="ach">
+                    <div className="ach" key={index}>
                         <div className="ach-side">
                             <div className="ach-row">
                                 <div>{item.date}</div>
