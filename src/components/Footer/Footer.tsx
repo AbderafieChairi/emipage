@@ -8,7 +8,7 @@ export default function Footer() {
                 <img src={require("../../logo.png")} alt="" height={200} width={200}/>
                 <div className='center white'>
                     Emicatronic
-                </div>            
+                </div>             
             </div>
             <div className="footer-main">
                 <div className="">

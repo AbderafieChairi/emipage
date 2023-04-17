@@ -13,11 +13,8 @@
 .footer-img-container{
     position: relative;
     /* transform: rotate(-20deg); */
-    background-color: #0f7ca3;
     width: max-content;
     padding: 20px;
-    top: -30px;
-    left: 10px; 
 }
 .center{
     display: flex;
