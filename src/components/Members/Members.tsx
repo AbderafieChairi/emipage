@@ -1,27 +1,15 @@
 import React, { useState } from 'react'
 import "./Members.css"
 import portrait from '../../portrait.png'
+import { DocumentData, collection, getDocs } from 'firebase/firestore';
+import { db } from '../../config/fireabase';
 export default function Members() {
-    const [members, setMembers] = useState([
-        {
-            name: "Chairi Ahmed",
-            profession: "Developer"
-        },
-        {
-            name: "Jane Doe",
-            profession: "Designer"
-        },
-        {
-            name: "John Doe",
-            profession: "Developer"
-        },
-        {
-            name: "Jane Doe",
-            profession: "Designer"
-        },
-    ]);
+    const [members, setMembers] = useState<DocumentData[]>([]);
     React.useEffect(()=>{
-        setMembers(m=>m)
+        getDocs(collection(db,'/users'))
+        .then((snapshot)=>{
+            setMembers(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})))
+        })
     },[])
     return (
       <div>
@@ -30,7 +18,7 @@ export default function Members() {
         </h1>
         <div className="mem-list">
           {members.map((member, index) => (
-            <Member key={index}  name={member.name} profession={member.profession}/>
+            <Member key={index}  name={member.name} profession={member.profile}/>
           ))}
         </div>
       </div>

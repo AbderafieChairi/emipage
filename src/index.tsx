@@ -9,6 +9,7 @@ import Projects from './components/Project/Project';
 import Sponsors from './components/Sponsors/Sponsors';
 import ContactForm from './components/Contactus/ContactForm';
 import Footer from './components/Footer/Footer';
+import Admin from './components/Admin/Admin';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +17,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <div>
     <App />
+    <Admin />
     <About />
     <Achievements/>
     <Members/>
