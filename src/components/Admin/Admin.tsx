@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { db, storage } from '../../config/fireabase'
-import { DocumentData, addDoc, collection, deleteDoc, doc, getDoc, getDocs, limit, query, setDoc, where } from 'firebase/firestore'
+import { DocumentData, addDoc, collection, doc, getDoc, getDocs, limit, query, setDoc, where } from 'firebase/firestore'
 import "./Admin.css"
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { deleteObject, getDownloadURL, listAll, ref } from 'firebase/storage'
 import ImageUploader from './imageUploader'
-import { relative } from 'path'
 
 export default function Admin() {
     const [url, setUrl] = useLocalStorage('url',[])
     const [displayUrl, setDisplayUrl] = useLocalStorage('display-url',[])
-    const [list, setList] = useState<string[]>(['project','users','Achievements','sponsor'])
+    const [list] = useState<string[]>(['project','users','Achievements','sponsor'])
 
     const addurl=(id:string,name:string)=>{
         setUrl([...url,id])
         setDisplayUrl([...displayUrl,name])
     }
     const backurl=()=>{
-        setUrl(url.filter((i:any,k:any)=>k!=url.length-1))
-        setDisplayUrl(url.filter((i:any,k:any)=>k!=url.length-1))
+        setUrl(url.filter((i:any,k:any)=>k!==url.length-1))
+        setDisplayUrl(url.filter((i:any,k:any)=>k!==url.length-1))
     }
 
     return (
@@ -61,7 +60,7 @@ function FireCollection(props:any){
         setMousePos({ x: event.clientX, y: event.clientY });
       };
 
-    const extractDocs = ()=>{
+    const extractDocs = useCallback(()=>{
         getDocs(collection(db,props.url.join("/"))).then((snapshot)=>{
             setData(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})).filter(i=>!("type" in i)))
         })
@@ -75,10 +74,10 @@ function FireCollection(props:any){
             setForm(r)
             setInitForm(r)
         })
-    }
+    },[props.url])
     React.useEffect(()=>{
         extractDocs()
-    },[props.url])
+    },[props.url,extractDocs])
     return (
         <div onMouseMove={handleMouseMove}>
             {
@@ -166,11 +165,11 @@ function FireDoc(props: any) {
     const [key, setKey] = useState("")
     const [value, setValue] = useState(null)
     const [position, setPosition] = useState({x:0,y:0})
-    const extractDoc = ()=>{
+    const extractDoc = useCallback(()=>{
         getDoc(doc(db,"/"+props.url.join("/"))).then((snapshot)=>{
             setData(({id:snapshot.id,...snapshot.data()}))
         })
-    }  
+    },[props.url])  
     const convert =(a : DocumentData)=>{
         const b=[]
         for (let i in a){
@@ -180,9 +179,8 @@ function FireDoc(props: any) {
     }
     React.useEffect(()=>{
         extractDoc()
-    },[props.url])
+    },[props.url,extractDoc])
     const update=(value:any)=>{
-        const d= data
         delete data.id
         setDoc(doc(db,"/"+props.url.join("/")),
         {...data,[key]:value}
@@ -272,10 +270,9 @@ function ImageEdit(props:any){
         setValue("")
 
     } 
-    const extract=()=>{
+    const extract=useCallback(()=>{
         setImgUrls([])
         const listRef = ref(storage, '/images');
-        console.log(value);
         listAll(listRef).then((res)=>{
             res.items.forEach((itemRef) => {
                 getDownloadURL(itemRef).then((url) => {
@@ -283,7 +280,7 @@ function ImageEdit(props:any){
                 })
               });
         })
-    }
+    },[])
     const deleteImage=(ref_:any)=>{
         console.log("delete")
         deleteObject(ref_)
@@ -296,7 +293,7 @@ function ImageEdit(props:any){
 
     React.useEffect(()=>{
         extract()
-    },[nbr]) 
+    },[nbr,extract]) 
     return (
         <div style={{position:'relative'}}>
         

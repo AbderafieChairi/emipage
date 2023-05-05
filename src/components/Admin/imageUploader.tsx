@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useState } from "react";
+import { ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/fireabase";
 import "./Admin.css"
 function ImageUploader(props:any) {
