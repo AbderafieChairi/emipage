@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import "./Members.css"
-import portrait from '../../portrait.png'
 import { DocumentData, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../config/fireabase';
 export default function Members() {
