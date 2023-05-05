@@ -3,9 +3,9 @@
 
 .admin-table{
     margin:20px 50px;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     border: solid 2px black;
-    overflow: hidden;
+    /* overflow: hidden; */
     box-shadow: 2px 1px 4px #aaa;
 }
 .admin-table-header{
@@ -17,10 +17,18 @@
     border-bottom: none;
 }
 .admin-table-row{
-    padding: 7px;
+    padding: 13px;
+    flex: 1;
 }
 .admin-table-row-info{
     padding: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.key{
+    font-weight: bold;
+    margin: 5px;
 }
 .admin-table-row:hover{
     cursor: pointer;
@@ -55,8 +63,107 @@
     cursor: pointer;
 }
 .edit-div{
-    position: fixed;
+    position: absolute;
     box-shadow: 1px 1px 3px #aaa;
     background: white;
     padding: 10px;
+    z-index: 800;
+}
+
+.admin-imgs{
+    width: 700px;
+    border:dashed 1px #999;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.admin-img-container{
+    padding: 7px;
+}
+.admin-img-container:hover{
+    user-select: none;
+    cursor: pointer;
+    background-color: #cbbcbc;
+}
+
+.admin-img-add{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+}
+.admin-img-add > label{
+    font-size: 14px;
+    font-weight: normal;
+}
+.admin-img-add >label:hover{
+    cursor: pointer;
+    user-select: none;
+    text-decoration: underline;
+}
+.admin-img-add-button{
+    border: none;
+    background: none;
+    color: rgb(47, 79, 116);
+    margin-left: 5px;
+}
+.admin-img-add-button:hover{
+    color: #000000;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.touchable{
+    color: rgb(38, 104, 116);
+}
+
+.touchable:hover{
+    cursor: pointer;
+    user-select: none;
+    color: rgb(0, 0, 0);
+}
+.admin-table-row-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.add{
+    font-size: 18px;
+    margin: 15px;
+}
+.add:hover{
+    text-decoration: underline;
+}
+
+.submit{
+    border: none;
+    background: rgb(50, 141, 157);
+    padding: 8px 13px;
+    margin: 10px;
+    color: white;
+    font-size: 14px;
+}
+.submit:hover{
+    cursor: pointer;
+    user-select: none;
+    background-color: rgb(21, 110, 148);
+}
+
+
+.delete-icon{
+    height: 25px;
+    aspect-ratio: 1;
+    background-color: white;
+    font-size: 18px;
+    padding: 2px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 9999;
+}
+.delete-icon:hover{
+    background-color: #d5d5d5;
 }

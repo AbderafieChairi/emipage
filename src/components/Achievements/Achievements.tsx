@@ -1,73 +1,25 @@
 import React, { useState } from 'react'
 import "./Achievements.css"
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../config/fireabase'
 export default function Achievements() {
-    const [year, setYear] = useState("2020/2021")
-    const [data, setData] = useState([
-        {
-            year: "2020/2021",
-            achievments: [
-                {
-                    date: "01/2021",
-                    achievement: "First achievement",
-                    data: "First data"
-                },
-                {
-                    date: "02/2021",
-                    achievement: "Second achievement",
-                    data: "Second data"
-                }
-            ]
-        },
-        {
-            year: "2021/2022",
-            achievments: [
-                {
-                    date: "01/2021",
-                    achievement: "First achievement",
-                    data: "ahmed data"
-                },
-                {
-                    date: "02/2021",
-                    achievement: "Second achievement",
-                    data: "abderafie data"
-                }
-            ]
-        },
-        {
-            year: "2022/2023",
-            achievments: [
-                {
-                    date: "01/2021",
-                    achievement: "First achievement",
-                    data: "youssef data"
-                },
-                {
-                    date: "02/2021",
-                    achievement: "Second achievement",
-                    data: "khadija data"
-                }
-            ]
-        }
-    ])
+    const [data, setData] = useState<any[]>([])
+    React.useEffect(()=>{
+        getDocs(collection(db,'/project'))
+        .then((snapshot)=>{
+            setData(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})).filter(i=>!("type" in i)))
+        })
+    },[])
   return (
     <div>
         <h1 style={{textAlign:'center',margin:60}}>Achievements</h1>
 
     <div className="ach-container">
     <div>
-        <div className="ach-years">
-            {data.map((item, index) => (
-                <div className="ach-year" key={index} onClick={() => {setYear(item.year);setData(d=>d)}}>
-                    {item.year}
-                </div>
-            ))}
-
-        </div>
     </div>
-    <div className="ach1">
         <div className="achs">
             {
-                data.filter(i=>i.year===year)[0].achievments.map((item, index) => (
+                data.map((item, index) => (
                     <div className="ach" key={index}>
                         <div className="ach-side">
                             <div className="ach-row">
@@ -80,17 +32,16 @@ export default function Achievements() {
                         </div>
                         <div className="ach-cont">
                             <div className="ach-h">
-                                {item.achievement}
+                                {item.title}
                             </div>
                             <div className="ach-txt">
-                                {item.data}
+                                {item.details}
                             </div>
                         </div>
                     </div>
                 ))
             }
         </div>
-    </div>
 </div>
 </div>
 

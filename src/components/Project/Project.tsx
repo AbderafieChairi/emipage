@@ -1,35 +1,25 @@
 import React, { useState } from 'react'
 import "./Project.css"
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../config/fireabase'
 
 
 interface project{
     id:string,
     title:string,
-    img:string,
+    imgsrc:string,
     tag:string,
     details:string,
     date:string
 } 
 export default function Projects() {
-    const [data] = useState<project[]>([
-        {
-            id: "1",
-            title: "Web Design",
-            img: "https://www.digitaltrends.com/wp-content/uploads/2017/04/arduino_with_breadboard.jpg?fit=2365%2C1774&p=1",
-            tag:"Web Design",
-            date:'01/07/2022',
-            details:"Lorem ipsum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. sLorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consecteum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. sLorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consecteum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. sLorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consecteum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. sLorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. "
-        },
-        {
-            id: "2",
-            title: "Web Design",
-            img: "https://www.digitaltrends.com/wp-content/uploads/2017/04/arduino_with_breadboard.jpg?fit=2365%2C1774&p=1",
-            tag:"Web Design",
-            date:'03/07/2022',
-            details:"sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. porro cupiditate enim quibusdam."
-            
-        }
-    ])
+    const [data,setData] = useState<any[]>([])
+    React.useEffect(()=>{
+        getDocs(collection(db,'/project'))
+        .then((snapshot)=>{
+            setData(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})).filter(i=>!("type" in i)) )
+        })
+    },[])
   return (
     <div>
         <h1 style={{textAlign:'center',margin:60}}>Our Projects</h1>
@@ -59,11 +49,9 @@ function Project(props: { data: project}) {
             </div>
        </div>:
         <div className="">
-        <div className="prj-tag">
-        {props.data.title}
-        </div>
+ 
         <div className="prj-img">
-            <img src={props.data.img} alt={props.data.title} />
+            <img src={props.data.imgsrc} alt={props.data.title} />
         </div>
         <div className="prj-detail">
             <div>
@@ -77,7 +65,7 @@ function Project(props: { data: project}) {
             <div className="prj-title">
                 {props.data.title}
             </div>
-            <div>
+            <div style={{height:100}}>
                 <p>{props.data.details.slice(0,100)}...</p>
             </div>
             <div className="prj-more prj-touchable" onClick={()=>setHasDetails(true)}>

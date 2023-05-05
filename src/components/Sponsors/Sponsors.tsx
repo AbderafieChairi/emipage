@@ -5,16 +5,14 @@ import { db } from '../../config/fireabase'
 export default function Sponsors() {
     const [sponsors,setSponsors] = React.useState<DocumentData>([])
     React.useEffect(()=>{
-        getDocs(collection(db,'/users'))
+        getDocs(collection(db,'/sponsor'))
         .then((snapshot)=>{
-            console.log(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})))
-            setSponsors(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})))
+            setSponsors(snapshot.docs.map((doc)=>({id:doc.id,...doc.data()})).filter(i=>!("type" in i)))
         })
     },[])
     return (
     <div>
         <h1 style={{textAlign:'center',margin:60}}>Our Sponsors</h1>
-        
         <div className="spns-list">
             {sponsors.map((item:any, index:any) => (
                 <Sponsor key={index} data={item} />

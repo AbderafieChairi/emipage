@@ -73,9 +73,9 @@
     
 }
 .ach-txt {
-    font-size: 15px;
-    height: 150px;
+    font-size: 18px;
     width: 600px;
+    padding: 15px;
 }
 .ach-row{
     flex: 1;
